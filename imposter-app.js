@@ -58,9 +58,15 @@ getExternalData = () => {
       data.forEach((user) => {
         const userDiv = document.createElement('div');
         const userLink = document.createElement('a');
+        const userImg = document.createElement('img');
+        userDiv.id = 'userDiv';
+        userImg.setAttribute('src', user['avatar_url']);
+        userImg.id = 'userId';
         userLink.href = `${user['html_url']}`;
+        userLink.style.textDecoration = 'none';
         userLink.setAttribute('target', '_blank');
-        userDiv.textContent = `User ${user['id']}: ${userLink.text}`;
+        userDiv.textContent = `User ${user['id']} ${userLink.text}`;
+        userDiv.appendChild(userImg);
         userLink.textContent = `${user['login']}`;
         userDiv.appendChild(userLink);
         document.querySelector('#output').style.fontSize = '2rem';
